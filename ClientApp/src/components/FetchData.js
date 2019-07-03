@@ -9,6 +9,7 @@ export class FetchData extends Component {
     }
     async componentDidMount() {
         let data = await fetch('api/Rest/Test');
+        console.log(data)
         this.setState({data, loading: false });
     }
 

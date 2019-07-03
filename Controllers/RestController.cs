@@ -20,7 +20,7 @@ namespace promotion.Controllers
 
             response.EnsureSuccessStatusCode();
 
-            string content = await response
+            var content = await response
                 .Content
                 .ReadAsStringAsync()
                 .ConfigureAwait(false);

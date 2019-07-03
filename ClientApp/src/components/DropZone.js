@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import './DropZone.css'
-import Thumb from "./Thumb";
 import Editor from './Editor'
 
 class DropZone extends Component {
