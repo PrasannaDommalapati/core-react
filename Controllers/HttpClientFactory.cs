@@ -12,12 +12,10 @@ namespace promotion.Controllers
         {
             const string endpoint = "https://reqres.in/api/";
 
-            HttpClient client = new HttpClient
+            return new HttpClient
             {
                 BaseAddress = new Uri(endpoint)
             };
-
-            return client;
         }
     }
 }

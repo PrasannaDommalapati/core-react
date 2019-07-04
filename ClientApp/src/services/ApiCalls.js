@@ -26,3 +26,13 @@ export const fetchDocumentRequestsByFilter = async (filter) => {
 
     throw (new Error('Unable to get document requests for supplied filter'));
 }
+
+export const fetchPosts = async () =>{
+
+    const response = await fetch("api/unknown");
+    if(response.status <400){
+
+        return await response.json();
+    }
+    throw (new Error(`Unable to get list of posts.`));
+}

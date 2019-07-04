@@ -1,6 +1,6 @@
 import * as Faker from 'faker';
 
-export default  {
+export default {
     documentList: [
         {
             name: Faker.system.fileName(),
@@ -18,8 +18,29 @@ export default  {
             size: Faker.random.number()
         }
     ],
+    posts: [{
+        id: 1,
+        name: "cerulean",
+        year: 2000,
+        color: "#98B2D1",
+        pantone_value: "15-4020"
+    },
+    {
+        id: 1,
+        name: "cerulean",
+        year: 2000,
+        color: "#98B2D1",
+        pantone_value: "15-4020"
+    },
+    {
+        id: 1,
+        name: "cerulean",
+        year: 2000,
+        color: "#98B2D1",
+        pantone_value: "15-4020"
+    }],
 
-    
+
     documentRequests: [
         {
             referenceId: "3417028b-d716-4d47-9d82-971f5d44b5b2",

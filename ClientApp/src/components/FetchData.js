@@ -5,24 +5,20 @@ export class FetchData extends Component {
 
     constructor() {
         super();
-        this.state = { data: [], loading: true };     
+        this.state = { data: [], loading: true };
     }
     async componentDidMount() {
-        let data = await fetch('api/Rest/Test');
-        console.log(data)
-        this.setState({data, loading: false });
+        let response = await fetch('api/Rest/Test').then(res => res.json());
+        this.setState({ data: response.data, loading: false });
     }
 
     render() {
-        let contents = this.state.loading
-            ? <p><em>Loading...</em></p>
-            : this.state.data;
-
+        const { data } = this.state
         return (
             <div>
                 <h1>Weather forecast</h1>
                 <p>This component demonstrates fetching data from the server.</p>
-                {contents}
+                {data && <div>{data.name}</div>}
             </div>
         );
     }

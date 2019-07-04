@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../src/actions/posts'
 
 export class Counter extends Component {
   static displayName = Counter.name;
@@ -15,7 +14,6 @@ export class Counter extends Component {
     this.setState({
       currentCount: this.state.currentCount + 1
     });
-    fetchPosts();
   }
   
   
@@ -36,10 +34,4 @@ export class Counter extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    posts: state.posts
-  }
-}
-
-export default connect(mapStateToProps, { fetchPosts })(Counter);
+export default connect()(Counter);

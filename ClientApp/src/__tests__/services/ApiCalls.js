@@ -1,5 +1,5 @@
 import * as Faker from 'faker';
-import { fetchDocuments, fetchDocumentRequestsByFilter } from '../../services/ApiCalls'
+import { fetchDocuments, fetchDocumentRequestsByFilter, fetchPosts } from '../../services/ApiCalls'
 
 describe('apiCalls', () => {
 
@@ -70,4 +70,36 @@ describe('apiCalls', () => {
         })
 
     });
+
+    describe('fetch posts suite', () => {
+        let posts = JSON.stringify([
+            {
+                id: 1,
+                name: "cerulean",
+                year: 2000,
+                color: "#98B2D1",
+                pantone_value: "15-4020"
+            }]);
+
+        it('returns a list of posts on success', () => {
+            window.fetch = jest.fn()
+                .mockImplementation(() => ({
+                    status: 200,
+                    json: () => Promise.resolve(posts)
+                }));
+
+            expect(fetchPosts()).resolves.toEqual(posts);
+        });
+
+        it('throw an error on failure', () => {
+            window.fetch = jest.fn()
+                .mockImplementation(() => (
+                    {
+                        status: 500
+                    }
+                ));
+
+            expect(fetchPosts()).rejects.toEqual(Error(`Unable to get list of posts.`));
+        });
+    })
 })
