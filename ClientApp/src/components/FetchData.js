@@ -8,8 +8,10 @@ export class FetchData extends Component {
         this.state = { data: [], loading: true };
     }
     async componentDidMount() {
-        let response = await fetch('api/Rest/Test').then(res => res.json());
-        this.setState({ data: response.data, loading: false });
+        let response = await fetch('api/rest/best').then(res => {
+            return res.json()}
+            );
+        this.setState({ data: response, loading: false });
     }
 
     render() {
@@ -18,7 +20,7 @@ export class FetchData extends Component {
             <div>
                 <h1>Weather forecast</h1>
                 <p>This component demonstrates fetching data from the server.</p>
-                {data && <div>{data.name}</div>}
+                {data && data.map((post,index) => <div key={index}>{post.name}</div>)}
             </div>
         );
     }

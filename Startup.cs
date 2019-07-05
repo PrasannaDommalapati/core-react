@@ -43,14 +43,8 @@ namespace promotion
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
-            });
-
+            app.UseMvc();
+           
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp";

@@ -29,7 +29,7 @@ export const fetchDocumentRequestsByFilter = async (filter) => {
 
 export const fetchPosts = async () =>{
 
-    const response = await fetch("api/unknown");
+    const response = await fetch("api/Rest/unknown");
     if(response.status <400){
 
         return await response.json();

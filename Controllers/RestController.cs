@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using promotion.Models;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -10,13 +13,13 @@ namespace promotion.Controllers
     public class RestController : Controller
     {
         [HttpGet("[action]")]
-        public async Task<object> Test()
+        public async Task<ActionResult> Best()
         {
             HttpClient client = HttpClientFactory.Create();
 
             var response = await client
-                .GetAsync("products/3")
-                .ConfigureAwait(false);
+               .GetAsync("unknown")
+               .ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
 
@@ -24,10 +27,12 @@ namespace promotion.Controllers
                 .Content
                 .ReadAsStringAsync()
                 .ConfigureAwait(false);
+            var jsonData = JObject.Parse(content);
 
-            return await Task
-                .Run(() => JsonConvert.DeserializeObject(content))
-                .ConfigureAwait(false);
+            List<Post> PostList = JsonConvert
+                .DeserializeObject<List<Post>>(jsonData.GetValue("data").ToString());
+
+            return Json(PostList);
         }
     }
 }
