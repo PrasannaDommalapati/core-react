@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {fetchPosts} from '../services/ApiCalls'
 
 export class FetchData extends Component {
     static displayName = FetchData.name;
@@ -8,9 +9,7 @@ export class FetchData extends Component {
         this.state = { data: [], loading: true };
     }
     async componentDidMount() {
-        let response = await fetch('api/rest/best').then(res => {
-            return res.json()}
-            );
+        let response = await fetchPosts();
         this.setState({ data: response, loading: false });
     }
 
