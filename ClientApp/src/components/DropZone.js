@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './DropZone.css'
+import './DropZone.scss'
 import Editor from './Editor'
 
 class DropZone extends Component {
