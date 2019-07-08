@@ -12,9 +12,4 @@ describe('Homepage test suite', () => {
     it('renders correctly', () => {
         expect(component).toHaveLength(1);
     });
-
-    it('renders sidebar', () => {
-        expect(component).toContainReact(<SideBar />)
-    });
-
 });

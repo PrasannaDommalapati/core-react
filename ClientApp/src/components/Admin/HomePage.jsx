@@ -2,22 +2,22 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
 export class _HomePage extends Component {
+
+    constructor() {
+        super();
+        console.log(this.props)
+        this.state = {
+          articles: [
+            { title: "React Redux Tutorial for Beginners", id: 1 },
+            { title: "Redux e React: cos'è Redux e come usarlo con React", id: 2 }
+          ]
+        };
+      }
     render() {
         return <div className="row">
-            <SideBar />
-            <SideBar />
+          
         </div>
     }
 }
 
-export const SideBar = () => {
-    return <div data-side-bar>SideBar</div>
-}
-const mapStateToProps = (state) => {
-    console.log(state)
-    return {
-        profile: 'state.user.profile',
-        loggedIn: 'state.auth.loggedIn'
-    };
-}
-export default connect(mapStateToProps)(_HomePage);
+export default connect()(_HomePage);
