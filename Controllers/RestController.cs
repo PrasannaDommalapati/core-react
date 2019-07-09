@@ -18,7 +18,7 @@ namespace promotion.Controllers
             HttpClient client = HttpClientFactory.Create();
 
             var response = await client
-               .GetAsync("unknown")
+               .GetAsync("users/2")
                .ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
@@ -29,8 +29,8 @@ namespace promotion.Controllers
                 .ConfigureAwait(false);
             var jsonData = JObject.Parse(content);
 
-            List<Post> PostList = JsonConvert
-                .DeserializeObject<List<Post>>(jsonData.GetValue("data").ToString());
+            var PostList = JsonConvert
+                .DeserializeObject(jsonData.GetValue("data").ToString());
 
             return Json(PostList);
         }

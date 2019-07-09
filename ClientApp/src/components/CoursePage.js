@@ -3,36 +3,17 @@ import { connect } from 'react-redux'
 import { createCourse } from '../redux/actions/courseActions'
 
 class CoursePage extends Component {
-    state = {
-        course: {
-            title: ''
-        }
-    }
 
-    handleChange = event => {
-        const course = { ...this.state.course, title: event.target.value };
-        this.setState({ course });
-    }
-
-    handleSubmit = event => {
-        event.preventDefault()
-        this.props.createCourse(this.state.course);
+    componentDidMount() {
+        this.props.createCourse();
     }
 
     render() {
-        const { title } = this.state.course;
+        const { courses } = this.props
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <h2>Courses</h2>
-                    <h3>Add Courses</h3>
-                    <input type="text"
-                        id="title"
-                        onChange={this.handleChange}
-                        value={title} />
-                    <button type="submit">Add Course</button>
-                    {this.props.courses && this.props.courses.map((course, index) => <div key={index}>{course.title}</div>)}
-                </form>
+                <h2>List Courses</h2>
+                {courses && courses.map((course,i) =><div key={i}>{course.email}</div>)}
             </div>
         )
     }

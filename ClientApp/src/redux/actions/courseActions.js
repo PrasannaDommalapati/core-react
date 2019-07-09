@@ -1,9 +1,12 @@
 import ActionType from '../ActionType';
+import {fetchPosts} from '../../services/ApiCalls'
 
-//these types of functions are called action creators
-export const createCourse = (course) => {
-    return {
-        type: ActionType.CREATE_COURSE,
-        payload: course
-    }
+export const createCourse = () => {
+    return dispatch=> fetchPosts()
+    .then(posts => {
+        dispatch({
+            type: ActionType.CREATE_COURSE,
+            payload: posts
+        });
+    });
 }
