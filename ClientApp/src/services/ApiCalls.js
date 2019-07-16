@@ -28,8 +28,8 @@ export const fetchDocumentRequestsByFilter = async (filter) => {
 }
 
 export const fetchPosts = async () =>{
-
-    const response = await fetch("api/rest/best");
+    const id = 2;
+    const response = await fetch(`api/rest/users/${id}`);
     if(response.status <400){
 
         return await response.json();
