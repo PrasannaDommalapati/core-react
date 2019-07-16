@@ -16,11 +16,21 @@ export const fetchDocumentRequestsByFilter = async (filter) => {
     throw (new Error('Unable to get document requests for supplied filter'));
 }
 
-export const fetchPosts = async (id) =>{
+export const fetchUser = async (id) =>{
     const response = await fetch(`api/rest/users/${id}`);
+    if(response.status <400){
+
+        return await response.json();
+    }
+    throw (new Error(`Unable to get user details fir ${id}.`));
+}
+
+export const fetchUserList = async () => {
+    const response = await fetch(`api/rest/unknown`);
     if(response.status <400){
 
         return await response.json();
     }
     throw (new Error(`Unable to get list of posts.`));
 }
+

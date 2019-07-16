@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getPostsAction } from '../redux/actions/postActions'
+import { getUserAction,getUserListAction } from '../redux/actions/userActions'
 
 export class FetchData extends Component {
     static displayName = FetchData.name;
 
     componentDidMount() {
-        this.props.getPostsAction();
+        this.props.getUserListAction();
     }
 
     render() {
-        const { posts } = this.props
+        console.log(this.props)
+        const { users } = this.props
         return (
             <div>
                 <h1>Weather forecast</h1>
                 <p>This component demonstrates fetching data from the server using Redux.</p>
-                {posts && posts.map((post, i) => <div key={i}>
-                    {post.data.first_Name}
+                {users && users.map((post, i) => <div key={i}>
+                    {post.data.first_Name}--{post.data.last_Name}
                     <img alt="avatar" src={post.data.avatar} />
                 </div>)}
             </div>
@@ -27,8 +28,8 @@ export class FetchData extends Component {
 //what is passed to the component via props
 const mapStateToProps = (state) => {
     return {
-        posts: state.posts
+        users: state.users
     };
 }
 
-export default connect(mapStateToProps, { getPostsAction })(FetchData);
+export default connect(mapStateToProps, { getUserAction,getUserListAction })(FetchData);

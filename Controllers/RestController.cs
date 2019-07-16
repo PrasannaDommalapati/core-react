@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using promotion.Models;
 using promotion.ProxyHttp;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace promotion.Controllers
@@ -18,6 +20,14 @@ namespace promotion.Controllers
         {
             return await EndpointFactory.Create(UriPaths.GetUserEndpoint)
                 .GetAsync<PostData>(id)
+                .ConfigureAwait(false);
+        }
+
+        [HttpGet("unknown")]
+        public async Task<PostData> GetList()
+        {
+            return await EndpointFactory.Create(UriPaths.GetUsersListEndpoint)
+                .GetAsync<PostData>()
                 .ConfigureAwait(false);
         }
     }
