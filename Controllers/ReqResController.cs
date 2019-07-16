@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using promotion.Helper;
 using promotion.Models;
+using promotion.ProxyHttp;
 using System.Threading.Tasks;
 
 namespace promotion.Controllers

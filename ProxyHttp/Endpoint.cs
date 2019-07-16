@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace promotion.Helper
+namespace promotion.ProxyHttp
 {
     public class Endpoint : IEndpoint
     {

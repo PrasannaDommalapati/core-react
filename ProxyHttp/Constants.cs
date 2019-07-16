@@ -1,4 +1,4 @@
-﻿namespace promotion.Helper
+﻿namespace promotion.ProxyHttp
 {
     public static class Constants
     {

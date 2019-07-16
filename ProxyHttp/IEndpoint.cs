@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace promotion.Helper
+namespace promotion.ProxyHttp
 {
     public interface IEndpoint
     {

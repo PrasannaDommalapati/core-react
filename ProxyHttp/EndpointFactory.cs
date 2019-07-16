@@ -2,7 +2,7 @@
 using promotion.Library;
 using System.Net.Http;
 
-namespace promotion.Helper
+namespace promotion.ProxyHttp
 {
     public class EndpointFactory : IEndpointFactory
     {

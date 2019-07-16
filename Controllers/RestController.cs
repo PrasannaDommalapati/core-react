@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using promotion.Helper;
 using promotion.Models;
-using System.Net.Http;
+using promotion.ProxyHttp;
 using System.Threading.Tasks;
 
 namespace promotion.Controllers
