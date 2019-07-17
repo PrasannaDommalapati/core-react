@@ -2,8 +2,7 @@ version: 2.0
 jobs:
  build:
    docker:
-    - image: mcr.microsoft.com/dotnet/core/sdk:2.2
-    - image: circleci/node:7.10
+    - image: emeraldsquad/dotnet-nodejs
    steps:
      - checkout
      - run:
