@@ -2,7 +2,7 @@ version: 2.0
 jobs:
  build:
    docker:
-    - image: armutcom/aspnet-core-runtime-spa:2.2.3-spa-node-8.11.2-xenial
+    - image: armutcom/aspnet-core:2.2.3-xenial
    steps:
      - checkout
      - run:
