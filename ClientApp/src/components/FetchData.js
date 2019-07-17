@@ -1,26 +1,35 @@
 import React, { Component } from 'react';
-import { fetchPosts } from '../services/ApiCalls'
+import { connect } from 'react-redux'
+import { getUserAction,getUserListAction } from '../redux/actions/userActions'
 
 export class FetchData extends Component {
     static displayName = FetchData.name;
 
-    constructor() {
-        super();
-        this.state = { post: null, loading: true };
-    }
-    async componentDidMount() {
-        let response = await fetchPosts();
-        this.setState({ post: response.data, loading: false });
+    componentDidMount() {
+        this.props.getUserAction();
     }
 
     render() {
-        const { post } = this.state
+        console.log(this.props)
+        const { users } = this.props
         return (
             <div>
                 <h1>Weather forecast</h1>
-                <p>This component demonstrates fetching data from the server.</p>
-                {post && <div>{post.first_Name}</div>}
+                <p>This component demonstrates fetching data from the server using Redux.</p>
+                {users && users.map((post, i) => <div key={i}>
+                    {post.data.first_Name}--{post.data.last_Name}
+                    <img alt="avatar" src={post.data.avatar} />
+                </div>)}
             </div>
         );
     }
 }
+
+//what is passed to the component via props
+const mapStateToProps = (state) => {
+    return {
+        users: state.users
+    };
+}
+
+export default connect(mapStateToProps, { getUserAction })(FetchData);

@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using promotion.Helper;
 using promotion.Library;
+using promotion.ProxyHttp;
 using System.Net.Http;
 
 namespace promotion
@@ -27,9 +27,10 @@ namespace promotion
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration => configuration.RootPath = "ClientApp/build");
             services
-                .Configure<UriConfiguration>(Configuration.GetSection("PromotionsAPI"))
-                .AddSingleton<IEndpointFactory, EndpointFactory>()
-                .AddSingleton<HttpClient, HttpClient>();
+                .Configure<PromotionsConfiguration>(Configuration.GetSection("PromotionsAPI"))
+                .Configure<ManagementConfiguration>(Configuration.GetSection("ManagementAPI"))
+                .AddSingleton<IPromotionsEndpointFactory, PromotionsEndpointFactory>()
+                .AddSingleton<IManagementEndpointFactory, ManagementEndpointFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

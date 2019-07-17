@@ -1,14 +1,3 @@
-export const fetchDocuments = async (requestId) => {
-
-    const response = await fetch(`api/requests/request/${requestId}/documents`);
-
-    if (response.status < 400) {
-        return await response.json();
-    }
-
-    throw (new Error(`Unable to get documents for request '${requestId}'.`));
-}
-
 export const fetchDocumentRequestsByFilter = async (filter) => {
 
     const response = await fetch('api/requests/filter',{
@@ -27,12 +16,21 @@ export const fetchDocumentRequestsByFilter = async (filter) => {
     throw (new Error('Unable to get document requests for supplied filter'));
 }
 
-export const fetchPosts = async () =>{
-    const id = 2;
+export const fetchUser = async (id) =>{
     const response = await fetch(`api/rest/users/${id}`);
+    if(response.status <400){
+
+        return await response.json();
+    }
+    throw (new Error(`Unable to get user details for ${id}.`));
+}
+
+export const fetchUserList = async () => {
+    const response = await fetch(`api/rest/unknown`);
     if(response.status <400){
 
         return await response.json();
     }
     throw (new Error(`Unable to get list of posts.`));
 }
+

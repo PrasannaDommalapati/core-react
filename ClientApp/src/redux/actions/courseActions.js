@@ -1,8 +1,8 @@
 import ActionType from '../ActionType';
-import {fetchPosts} from '../../services/ApiCalls'
+import {fetchUser} from '../../services/ApiCalls'
 
 export const createCourse = () => {
-    return dispatch=> fetchPosts()
+    return dispatch=> fetchUser(2)
     .then(posts => {
         dispatch({
             type: ActionType.CREATE_COURSE,
