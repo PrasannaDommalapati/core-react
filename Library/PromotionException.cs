@@ -13,7 +13,7 @@ namespace promotion.Library
         public PromotionException(string message, Exception innerException)
             : base(message, innerException) { }
 
-        protected PromotionException(SerializationInfo info, in StreamingContext context)
+        public PromotionException(SerializationInfo info, in StreamingContext context)
             : base(info, context) { }
     }
 }
