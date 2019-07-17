@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using promotion.Library;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -11,13 +12,13 @@ namespace promotion.ProxyHttp
     {
         public HttpClient Client { get; set; }
 
-        public UriConfiguration Configuration { get; set; }
+        public HostConfiguration Configuration { get; set; }
 
-        public Endpoint(IOptions<UriConfiguration> configuration) : this(configuration.Value) { }
+        public Endpoint(IOptions<HostConfiguration> configuration) : this(configuration.Value) { }
 
-        public Endpoint(UriConfiguration configuration) : this(new HttpClient(), configuration) { }
+        public Endpoint(HostConfiguration configuration) : this(new HttpClient(), configuration) { }
 
-        public Endpoint(HttpClient client, UriConfiguration configuration)
+        public Endpoint(HttpClient client, HostConfiguration configuration)
         {
             Client = client;
             Configuration = configuration;
@@ -51,8 +52,19 @@ namespace promotion.ProxyHttp
             where TRequest : class
             where TResponse : class
         {
-            var response = await Client.PostAsync(Uri, new StringContent(Utility.Serialize(data), Encoding.UTF8, "application/json")).ConfigureAwait(false);
-            var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var response = await Client
+                .PostAsync(
+                    Uri,
+                    new StringContent(
+                        Utility.Serialize(data),
+                        Encoding.UTF8,
+                        "application/json"))
+                .ConfigureAwait(false);
+            var responseContent = await response
+                .Content
+                .ReadAsStringAsync()
+                .ConfigureAwait(false);
+
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 return Utility.Deserialize<TResponse>(responseContent);

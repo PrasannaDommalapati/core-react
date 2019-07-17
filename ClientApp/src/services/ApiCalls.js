@@ -22,7 +22,7 @@ export const fetchUser = async (id) =>{
 
         return await response.json();
     }
-    throw (new Error(`Unable to get user details fir ${id}.`));
+    throw (new Error(`Unable to get user details for ${id}.`));
 }
 
 export const fetchUserList = async () => {

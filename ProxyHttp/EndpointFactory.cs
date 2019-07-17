@@ -6,27 +6,28 @@ namespace promotion.ProxyHttp
 {
     public class EndpointFactory : IEndpointFactory
     {
-        public EndpointFactory(IOptions<UriConfiguration> uriConfiguration) : this(uriConfiguration.Value) { }
+        public EndpointFactory(IOptions<HostConfiguration> uriConfiguration) : this(uriConfiguration.Value) { }
 
-        public EndpointFactory(UriConfiguration uriConfiguration)
+        public EndpointFactory(HostConfiguration uriConfiguration)
         {
-            UriConfiguration = uriConfiguration;
+            Configuration = uriConfiguration;
         }
 
-        public EndpointFactory(HttpClient client, UriConfiguration uriConfiguration)
+        public EndpointFactory(HttpClient client, HostConfiguration uriConfiguration)
         {
             HttpClient = client;
-            UriConfiguration = uriConfiguration;
+            Configuration = uriConfiguration;
         }
 
-        public UriConfiguration UriConfiguration { get;}
+        public HostConfiguration Configuration { get;}
+
         public HttpClient HttpClient { get; set; }
 
         public IEndpoint Create(string path)
         {
-            var uriConfiguration = new UriConfiguration
+            var uriConfiguration = new HostConfiguration
             {
-                Host = UriConfiguration.Host,
+                Host = Configuration.Host,
                 Path = path
             };
 

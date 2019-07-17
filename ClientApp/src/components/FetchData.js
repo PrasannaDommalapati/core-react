@@ -6,7 +6,7 @@ export class FetchData extends Component {
     static displayName = FetchData.name;
 
     componentDidMount() {
-        this.props.getUserListAction();
+        this.props.getUserAction();
     }
 
     render() {
@@ -32,4 +32,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, { getUserAction,getUserListAction })(FetchData);
+export default connect(mapStateToProps, { getUserAction })(FetchData);
