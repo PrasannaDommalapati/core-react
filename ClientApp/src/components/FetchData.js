@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getUserAction,getUserListAction } from '../redux/actions/userActions'
+import { getUserAction } from '../redux/actions/userActions'
 
 export class FetchData extends Component {
     static displayName = FetchData.name;

@@ -17,7 +17,7 @@ export const fetchDocumentRequestsByFilter = async (filter) => {
 }
 
 export const fetchUser = async (id) =>{
-    const response = await fetch(`api/rest/users/${id}`);
+    const response = await fetch(`api/promotion/users/${id}`);
     if(response.status <400){
 
         return await response.json();
