@@ -4,7 +4,6 @@ import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import FetchData  from './components/FetchData';
 import DropZone from './components/DropZone';
-import HomePage from './components/Admin/HomePage';
 import CoursePage from './components/CoursePage';
 
 export default class App extends Component {
@@ -16,7 +15,6 @@ export default class App extends Component {
         <Route exact path='/' component={Home} />
         <Route path='/fetch-data' component={FetchData} />
         <Route path='/upload' component={DropZone} />
-        <Route path='/home' component={HomePage} />
         <Route path='/course' component={CoursePage} />
       </Layout>
     );

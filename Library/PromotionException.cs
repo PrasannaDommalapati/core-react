@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace promotion.Library
 {
@@ -12,7 +13,7 @@ namespace promotion.Library
         public PromotionException(string message, Exception innerException)
             : base(message, innerException) { }
 
-        protected PromotionException(System.Runtime.Serialization.SerializationInfo info, in System.Runtime.Serialization.StreamingContext context)
+        protected PromotionException(SerializationInfo info, in StreamingContext context)
             : base(info, context) { }
     }
 }
