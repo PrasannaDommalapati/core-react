@@ -71,7 +71,7 @@
     ]
   },
   "jest-junit": {
-    "suiteName": "Outputs Monitor SPA",
+    "suiteName": "Promotion SPA",
     "outputDirectory": ".",
     "outputName": "./reports/testReport.xml",
     "classNameTemplate": "{classname}-{title}",
