@@ -1,4 +1,5 @@
 export default {
-    GET_POSTS: 'GET_POSTS',
+    GET_USER: 'GET_USER',
+    GET_USER_LIST:'GET_USER_LIST',
     CREATE_COURSE:'CREATE_COURSE'
 };

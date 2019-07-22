@@ -8,13 +8,16 @@ describe('posts reducer', () => {
     });
 
     it('shuold return new state when received an action type', () => {
-        let posts = [{ title: "test1" }, { title: "test2" }, { title: "test3" }, { title: "test4" }];
+        let posts = [
+            { title: "test1" },
+            { title: "test2" },
+            { title: "test3" },
+            { title: "test4" }];
 
         const newState = courseReducer(undefined, {
             type: ActionType.CREATE_COURSE,
             payload: posts
         });
-        console.log(newState)
         expect(newState).toEqual(posts);
     });
 })

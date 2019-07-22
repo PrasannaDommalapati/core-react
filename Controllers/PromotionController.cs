@@ -7,16 +7,16 @@ namespace promotion.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RestController : Controller
+    public class PromotionController : Controller
     {
-        public IManagementEndpointFactory EndpointFactory { get; set; }
+        public IPromotionsEndpointFactory PromotionsEndpointFactory { get; set; }
 
-        public RestController(IManagementEndpointFactory endpointFactory) => EndpointFactory = endpointFactory;
+        public PromotionController(IPromotionsEndpointFactory promotionsEndpointFactory) => PromotionsEndpointFactory = promotionsEndpointFactory;
 
         [HttpGet("users/{id}")]
         public async Task<PostData> GetUser(string id)
         {
-            return await EndpointFactory
+            return await PromotionsEndpointFactory
                 .Create(UriPaths.GetUserEndpoint)
                 .GetAsync<PostData>(id)
                 .ConfigureAwait(false);
@@ -25,7 +25,7 @@ namespace promotion.Controllers
         [HttpGet("unknown")]
         public async Task<PostData> GetList()
         {
-            return await EndpointFactory
+            return await PromotionsEndpointFactory
                 .Create(UriPaths.GetUsersListEndpoint)
                 .GetAsync<PostData>()
                 .ConfigureAwait(false);
