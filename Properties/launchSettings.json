@@ -14,9 +14,9 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "PromotionsAPI:Host": "https://reqres.in",
-        "ManagementAPI:Host": "https://reqres.in",
-        "PromotionsAPI:Credential:Key": "key",
-        "PromotionsAPI:Credential:Id": "id"
+        "ManagementAPI:Host": "https://proxy.z-ppp-dv-apim01.xpzcloud.com/outputs/dv",
+        "ManagementAPI:Credential:Id": "Ocp-Apim-Subscription-Key",
+        "ManagementAPI:Credential:Key": "6e13eebbefc04526a82528824e350e43"
       }
     },
     "promotion": {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using promotion.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace promotion.ProxyHttp
         }
 
         public string Host { get; set; }
+
+        public Credntial Credential { get; set; }
 
         public string Path { get; set; } = "/";
     }

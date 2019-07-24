@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using promotion.Library;
+using promotion.Models;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -64,7 +67,7 @@ namespace promotion.ProxyHttp
                 .ReadAsStringAsync()
                 .ConfigureAwait(false);
 
-            if (response.StatusCode == HttpStatusCode.OK)
+            if (response.StatusCode == HttpStatusCode.Accepted)
             {
                 return Utility.Deserialize<TResponse>(responseContent);
             }

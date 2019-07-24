@@ -30,5 +30,19 @@ namespace promotion.Controllers
                 .GetAsync<PostData>()
                 .ConfigureAwait(false);
         }
+
+        [HttpPost("request")]
+        public async Task<ResponseData> UploadSigmaReq([FromBody]
+            [Bind(nameof(RequestData.RequesterId),
+            nameof(RequestData.Data),
+            nameof(RequestData.BusinessApplication),
+            nameof(RequestData.BusinessUnit),
+            nameof(RequestData.Metadata))] RequestData request)
+        {
+            return await EndpointFactory
+                .Create(UriPaths.RequestsEndpoint)
+                .PostAsync<RequestData,ResponseData>(request)
+                .ConfigureAwait(false);
+        }
     }
 }

@@ -30,9 +30,36 @@ class DropZone extends Component {
 
   onFilesAdded = event => {
     if (this.props.disabled) return;
+
     const files = event.target.files;
-    let filesArray = this.fileListToArray(files);
-    this.setState({ files: filesArray, hightlight: false });
+    let reader = new FileReader();
+    reader.readAsText(files[0]);
+
+    reader.onload = () => {
+      let base64Data = new Buffer.from(reader.result).toString('base64');
+ 
+      let filenameExt = files[0].name;
+      let fileName = filenameExt.split(".")[0]
+
+      let body = {
+        "requesterId": fileName,
+        data: base64Data,
+        businessApplication: "SIGMA",
+        businessUnit: "SALES",
+        templates: ["HAGQUR01"]
+
+      };
+
+      fetch('/api/rest/request', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body)
+      });
+    };
+    // let filesArray = this.fileListToArray(files);
+    // this.setState({ files: filesArray, hightlight: false });
   };
 
   onDragOver = evt => {

@@ -27,11 +27,16 @@ namespace promotion.ProxyHttp
         {
             var uriConfiguration = new HostConfiguration
             {
+                Credential = Configuration.Credential,
                 Host = Configuration.Host,
                 Path = path
             };
 
             var endpoint = new Endpoint(uriConfiguration);
+            endpoint.AddHeader(
+                uriConfiguration.Credential.Id,
+                uriConfiguration.Credential.Key);
+
             return endpoint;
         }
     }
