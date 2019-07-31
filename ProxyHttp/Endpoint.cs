@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using promotion.Library;
+using promotion.Models;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -63,10 +65,14 @@ namespace promotion.ProxyHttp
                 .Content
                 .ReadAsStringAsync()
                 .ConfigureAwait(false);
-
             if (response.StatusCode == HttpStatusCode.Accepted)
             {
-                return Utility.Deserialize<TResponse>(responseContent);
+                return Guid.TryParse(responseContent, out _)
+                    ? Utility.Deserialize<TResponse>(Utility.Serialize(new
+                    {
+                        id = responseContent
+                    }))
+                    : Utility.Deserialize<TResponse>(responseContent);
             }
             else
             {
