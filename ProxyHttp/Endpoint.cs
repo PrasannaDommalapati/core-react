@@ -1,8 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 using promotion.Library;
-using promotion.Models;
-using System;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -32,20 +29,20 @@ namespace promotion.ProxyHttp
 
         public async Task<TResponse> GetAsync<TResponse>(params string[] parameters) where TResponse : class
         {
-            var response = await Client.GetAsync(string.Format(Uri, parameters)).ConfigureAwait(false);
+            var response = await Client
+                .GetAsync(string.Format(Uri, parameters))
+                .ConfigureAwait(false);
+
+            string content = await response
+                .Content
+                .ReadAsStringAsync()
+                .ConfigureAwait(false);
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                return Utility.Deserialize<TResponse>(await response
-                    .Content
-                    .ReadAsStringAsync()
-                    .ConfigureAwait(false));
+                return Utility.Deserialize<TResponse>(content);
             }
             else
             {
-                var content = await response
-                    .Content
-                    .ReadAsStringAsync()
-                    .ConfigureAwait(false);
                 throw new PromotionException($"Response Status: '{response.StatusCode}' Content: '{content}'");
             }
         }
