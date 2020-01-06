@@ -7,7 +7,7 @@ import DropZone from './components/DropZone';
 import CoursePage from './components/CoursePage';
 
 export default class App extends Component {
-  static displayName = App.name;
+    static displayName = App.name;
 
   render () {
     return (

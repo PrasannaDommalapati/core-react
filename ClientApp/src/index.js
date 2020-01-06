@@ -1,8 +1,10 @@
-import 'bootstrap/dist/css/bootstrap.css';
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
 import configureStore from './redux/store/configureStore';
 import App from './App';
 import {unregister} from './registerServiceWorker';

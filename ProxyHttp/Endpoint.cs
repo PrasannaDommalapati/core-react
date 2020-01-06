@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
 using promotion.Library;
-using promotion.Models;
 using System;
 using System.Net;
 using System.Net.Http;
